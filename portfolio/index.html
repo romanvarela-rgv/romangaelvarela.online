@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio de Diseño Gráfico 2024-2026 | RGV, Roman Gael Varela</title>
+  <meta name="description" content="Galería de portadas de discos, flyers, logos y diseños para artistas de la escena urbana argentina. Portfolio 2024-2026 de Roman Gael Varela (RGV)."/>
+  <link rel="canonical" href="https://romangaelvarela.online/portfolio/"/>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Portfolio 24/25/26 | RGV Diseño Gráfico">
+  <meta property="og:description" content="Portadas, flyers, logos y diseños para artistas de la escena urbana argentina.">
+  <meta property="og:image" content="https://romangaelvarela.online/images/og-image.jpg">
+  <meta property="og:url" content="https://romangaelvarela.online/portfolio/">
+  <meta name="theme-color" content="#000000">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #E30000;
+      --red-intense: #D60303;
+      --black: #000000;
+      --panel: #141414;
+      --white: #FFFFFF;
+      --silver: #D9DCDC;
+      --muted: rgba(217,220,220,.75);
+      --card-w: 300px;
+      --card-h: 400px;
+      color-scheme: dark;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 2px solid var(--white); outline-offset: 3px; }
+
+    /* Scroll "infinito": el spacer da recorrido, la escena queda fija */
+    .spacer { width: 100%; }
+
+    .stage {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 20% 0%, rgba(227,0,0,.14), transparent 55%),
+        var(--black);
+    }
+    .scene {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 2000px;
+      perspective-origin: 10% 10%;
+    }
+    .fit { transform-style: preserve-3d; }
+    .track { position: relative; width: 0; height: 0; transform-style: preserve-3d; will-change: transform; }
+
+    .card {
+      position: absolute;
+      left: calc(var(--card-w) / -2);
+      top: calc(var(--card-h) / -2);
+      width: var(--card-w);
+      height: var(--card-h);
+      background: #111;
+      border: 0;
+      padding: 0;
+      cursor: zoom-in;
+      transform-style: preserve-3d;
+      box-shadow: 0 30px 60px rgba(0,0,0,.55);
+    }
+    .card img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(.72);
+      transition: filter .3s ease;
+    }
+    .card:hover img, .card:focus-visible img { filter: brightness(1); }
+    .card::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top right, rgba(0,0,0,.25), transparent 60%);
+      pointer-events: none;
+    }
+    .card-meta {
+      position: absolute;
+      top: -1.6rem; left: -.9rem;
+      display: flex; gap: .6rem; align-items: baseline;
+      font-size: .72rem;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      color: var(--white);
+      opacity: .5;
+      transition: opacity .3s ease;
+      pointer-events: none;
+    }
+    .card-meta b { font-weight: 500; font-variant-numeric: tabular-nums; }
+    .card-meta span { opacity: 0; transition: opacity .3s ease; }
+    .card:hover .card-meta, .card:focus-visible .card-meta { opacity: 1; }
+    .card:hover .card-meta span, .card:focus-visible .card-meta span { opacity: 1; }
+
+    /* Títulos */
+    .title {
+      position: fixed;
+      top: max(3vw, 5.25rem); left: 3vw;
+      z-index: 5;
+      pointer-events: none;
+      mix-blend-mode: difference;
+    }
+    .title h1 {
+      font-weight: 700;
+      font-size: clamp(1.6rem, 6vw, 5rem);
+      line-height: .92;
+      letter-spacing: -.04em;
+    }
+    .title .l1 { display: block; margin-left: 4vw; }
+    .title .l2 { display: block; }
+    .title .count {
+      font-size: .4em;
+      font-weight: 500;
+      vertical-align: top;
+      position: relative; top: .6em;
+      margin-left: .4rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Barra superior: volver + presupuesto */
+    .topbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3vw;
+    }
+    .back {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--silver);
+      padding: .55rem .2rem;
+      transition: color .2s;
+    }
+    .back:hover { color: var(--white); }
+    .cta {
+      font-size: .85rem;
+      font-weight: 700;
+      background: var(--red);
+      color: var(--white);
+      padding: .65rem 1.3rem;
+      border: 2px solid var(--white);
+      border-radius: 9999px;
+      transition: background-color .2s, transform .15s;
+    }
+    .cta:hover { background: var(--red-intense); }
+    .cta:active { transform: scale(.97); }
+
+    /* La interacción no es obvia: la pista se justifica acá */
+    .hint {
+      position: fixed;
+      right: 3vw; bottom: 3vw;
+      z-index: 5;
+      font-size: .75rem;
+      letter-spacing: .06em;
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    /* Lightbox */
+    .lb {
+      position: fixed; inset: 0;
+      z-index: 50;
+      background: rgba(0,0,0,.94);
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      padding: 4.5rem 1.25rem 2rem;
+      overscroll-behavior: contain;
+    }
+    .lb[hidden] { display: none; }
+    .lb figure { display: flex; flex-direction: column; align-items: center; gap: .9rem; min-width: 0; }
+    .lb img {
+      max-width: 100%;
+      max-height: calc(100dvh - 9rem);
+      object-fit: contain;
+      border: 2px solid var(--white);
+      border-radius: 8px;
+    }
+    .lb figcaption { font-size: .9rem; color: var(--silver); text-align: center; }
+    .lb-btn {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+      border: 2px solid var(--white);
+      color: var(--white);
+      font-size: 1rem;
+      cursor: pointer;
+      display: grid; place-items: center;
+      transition: background-color .2s, border-color .2s;
+    }
+    .lb-btn:hover { background: var(--red); border-color: var(--red); }
+    .lb-close { position: absolute; top: 1rem; right: 1.25rem; }
+
+    @media (max-width: 700px) {
+      .lb { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr auto; }
+      .lb figure { grid-column: 1 / -1; grid-row: 1; }
+      .lb-prev { grid-row: 2; justify-self: end; }
+      .lb-next { grid-row: 2; justify-self: start; }
+    }
+
+    /* Movimiento reducido: grilla estática, sin scroll 3D */
+    .static .spacer, .static .hint { display: none; }
+    .static .stage { position: static; overflow: visible; padding: 11rem 3vw 4rem; background: var(--black); }
+    .static .title { position: absolute; }
+    .static .scene { position: static; display: block; perspective: none; }
+    .static .fit, .static .track { transform: none !important; width: auto; height: auto; }
+    .static .track { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 2.5rem 1rem; }
+    .static .card { position: relative; left: auto; top: auto; width: 100%; height: auto; aspect-ratio: 3 / 4; transform: none !important; }
+    .static .card.dup { display: none; }
+  </style>
+</head>
+<body>
+
+<header class="topbar">
+  <a href="../#portfolio" class="back">← Volver al inicio</a>
+  <a href="../#contact" class="cta">Pedir presupuesto</a>
+</header>
+
+<div class="spacer" id="spacer"></div>
+
+<main class="stage" id="stage">
+  <h1 class="title">
+    <span class="l1">PORTFOLIO 24/25/26</span>
+    <span class="l2">RGV - DISEÑO GRÁFICO<span class="count" id="count"></span></span>
+  </h1>
+  <div class="scene">
+    <div class="fit" id="fit">
+      <div class="track" id="track"></div>
+    </div>
+  </div>
+</main>
+
+<p class="hint" id="hint">Scrolleá para recorrer</p>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Diseño ampliado" hidden>
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Diseño anterior">◂</button>
+  <figure>
+    <img id="lbImg" alt="">
+    <figcaption id="lbCap"></figcaption>
+  </figure>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Diseño siguiente">▸</button>
+</div>
+
+<script>
+  const ITEMS = [{"thumb": "../images/thumbs/cover-zell-calvin-klein.webp", "full": "../images/cover-zell-calvin-klein.webp", "title": "Portada de disco: Zell, Calvin Klein"}, {"thumb": "../images/thumbs/cover-zell-wow.webp", "full": "../images/cover-zell-wow.webp", "title": "Portada editorial: Zell, Wow"}, {"thumb": "../images/thumbs/cover-mf-doom.webp", "full": "../images/cover-mf-doom.webp", "title": "Poster de álbum: MF DOOM, MM..Food"}, {"thumb": "../images/thumbs/cover-neo-pistea-culto.webp", "full": "../images/cover-neo-pistea-culto.webp", "title": "Portada de disco: Neo Pistea, Culto"}, {"thumb": "../images/thumbs/cover-roman-5.webp", "full": "../images/cover-roman-5.webp", "title": "Portada de disco: Neo Pistea, Pistea Trap"}, {"thumb": "../images/thumbs/cover-roman-8.webp", "full": "../images/cover-roman-8.webp", "title": "Portada de disco: Duko, Zecca y CRO, Tuki"}, {"thumb": "../images/thumbs/cover-roman-7.webp", "full": "../images/cover-roman-7.webp", "title": "Diseño editorial: Lucho SSJ"}, {"thumb": "../images/thumbs/cover-roman-nnn.webp", "full": "../images/cover-roman-nnn.webp", "title": "Portada de disco: Franky Style, My Life is Chili"}, {"thumb": "../images/thumbs/cover-roman-radio.webp", "full": "../images/cover-roman-radio.webp", "title": "Portada de disco: Radio Club Hits, YBY Crew"}, {"thumb": "../images/thumbs/cover-little-boogie.webp", "full": "../images/cover-little-boogie.webp", "title": "Portada de disco: Little Boogie, El Doctor"}, {"thumb": "../images/thumbs/cover-keooo.webp", "full": "../images/cover-keooo.webp", "title": "Portada de disco: Kidd Keo, BandoBoyz"}, {"thumb": "../images/thumbs/cover-bariloko.webp", "full": "../images/cover-bariloko.webp", "title": "Flyer de evento: Bariloko, Vengan a Vernos"}, {"thumb": "../images/thumbs/cover-cerounno.webp", "full": "../images/cover-cerounno.webp", "title": "Portada de disco (collage): Cero Unno"}, {"thumb": "../images/thumbs/cover-cluster.webp", "full": "../images/cover-cluster.webp", "title": "Portada de disco: Cluster, Con Tilde"}, {"thumb": "../images/thumbs/cover-asd2.webp", "full": "../images/cover-asd2.webp", "title": "Portada de disco: Trappín, Diesel Collab"}, {"thumb": "../images/thumbs/cover-asd.webp", "full": "../images/cover-asd.webp", "title": "Portada de disco: Trappín, Stussy x Ruleta"}, {"thumb": "../images/thumbs/cover-milgmg.webp", "full": "../images/cover-milgmg.webp", "title": "Portada de disco: 1000 MG, KHEA / Youngflex"}, {"thumb": "../images/thumbs/cover-cv.webp", "full": "../images/cover-cv.webp", "title": "Diseño de CV digital: Escalated"}, {"thumb": "../images/thumbs/SOULHUNTERPOXY.webp", "full": "../images/SOULHUNTERPOXY.webp", "title": "Portada de disco: Soulhunter, Poxy"}, {"thumb": "../images/thumbs/CONTANDOBILLETES.webp", "full": "../images/CONTANDOBILLETES.webp", "title": "Portada de disco: Contando Billetes"}, {"thumb": "../images/thumbs/RECHISPIADOOO.webp", "full": "../images/RECHISPIADOOO.webp", "title": "Portada de disco: Re Chispiado, Danielito"}, {"thumb": "../images/thumbs/rataschilling.webp", "full": "../images/rataschilling.webp", "title": "Portada de disco: Ratas Chilling"}, {"thumb": "../images/thumbs/PERREOPARDEGATASHD.webp", "full": "../images/PERREOPARDEGATASHD.webp", "title": "Portada de disco: Perreo Par de Gatas"}, {"thumb": "../images/thumbs/sayi3.webp", "full": "../images/sayi3.webp", "title": "Portada de disco: Castlevania"}, {"thumb": "../images/thumbs/sayi2.webp", "full": "../images/sayi2.webp", "title": "Portada de disco: Castlevania SAYI V3"}, {"thumb": "../images/thumbs/sayi1.webp", "full": "../images/sayi1.webp", "title": "Portada de disco: SAYI HD"}, {"thumb": "../images/thumbs/BARBIERIVASYPACHESGLAM.webp", "full": "../images/BARBIERIVASYPACHESGLAM.webp", "title": "Diseño gráfico: Barbieri Rivas y Paches, Glam"}, {"thumb": "../images/thumbs/distorsion.webp", "full": "../images/distorsion.webp", "title": "Diseño gráfico: Distorsión, Jona Broder"}, {"thumb": "../images/thumbs/khole.webp", "full": "../images/khole.webp", "title": "Diseño gráfico: Khole"}, {"thumb": "../images/thumbs/ICECUBE.webp", "full": "../images/ICECUBE.webp", "title": "Diseño gráfico: Ice Cube"}, {"thumb": "../images/thumbs/CODEINEGUY.webp", "full": "../images/CODEINEGUY.webp", "title": "Diseño gráfico: Codeine Guy"}, {"thumb": "../images/thumbs/CODEINEGUYVERDE.webp", "full": "../images/CODEINEGUYVERDE.webp", "title": "Diseño gráfico: Codeine Guy Verde"}, {"thumb": "../images/thumbs/LAVRONKA.webp", "full": "../images/LAVRONKA.webp", "title": "Diseño gráfico: Lavronka"}, {"thumb": "../images/thumbs/LGANTE.webp", "full": "../images/LGANTE.webp", "title": "Diseño gráfico: L-Gante, Keloke"}, {"thumb": "../images/thumbs/VENTASELTITI.webp", "full": "../images/VENTASELTITI.webp", "title": "Flyer: Ventas El Titi"}, {"thumb": "../images/thumbs/danielietodeloeste.webp", "full": "../images/danielietodeloeste.webp", "title": "Flyer: Danielito del Oeste"}, {"thumb": "../images/thumbs/DANIELITODELOESTE2.webp", "full": "../images/DANIELITODELOESTE2.webp", "title": "Flyer: Danielito del Oeste II"}, {"thumb": "../images/thumbs/5202inspired.webp", "full": "../images/5202inspired.webp", "title": "Flyer: 5202 Inspired"}, {"thumb": "../images/thumbs/365popart.webp", "full": "../images/365popart.webp", "title": "Flyer pop art: 365"}, {"thumb": "../images/thumbs/joao1.webp", "full": "../images/joao1.webp", "title": "Flyer: Joao"}, {"thumb": "../images/thumbs/logoroman.webp", "full": "../images/logoroman.webp", "title": "Diseño de logo: RGV, graffiti tag"}, {"thumb": "../images/logouhd.webp", "full": "../images/logouhd.webp", "title": "Diseño de logo: UHD"}, {"thumb": "../images/thumbs/logoBARBER.webp", "full": "../images/logoBARBER.webp", "title": "Diseño de logo: BarberShop"}, {"thumb": "../images/thumbs/LOG.webp", "full": "../images/LOG.webp", "title": "Diseño de logo grunge"}, {"thumb": "../images/thumbs/XDXD.webp", "full": "../images/XDXD.webp", "title": "Diseño de logo: XDXD"}];
+
+  // Recorrido 3D (port a JS puro del "Collection Surfer")
+  const STEP = { x: 240, y: -84, z: -288 };
+  const SCROLL_PER_ITEM = 420;
+  const N = ITEMS.length;
+  const LOOP = N * SCROLL_PER_ITEM;
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const track = document.getElementById('track');
+  const fit = document.getElementById('fit');
+  document.getElementById('count').textContent = '(' + N + ')';
+
+  // Dos sets: el segundo es el buffer para que el loop no tenga corte
+  const cards = [];
+  [...ITEMS, ...ITEMS].forEach((item, i) => {
+    const idx = i % N;
+    const btn = document.createElement('button');
+    btn.className = 'card' + (i >= N ? ' dup' : '');
+    btn.type = 'button';
+    btn.setAttribute('aria-label', 'Ampliar: ' + item.title);
+    if (i >= N) { btn.tabIndex = -1; btn.setAttribute('aria-hidden', 'true'); }
+    btn.innerHTML =
+      '<span class="card-meta"><b>' + String(idx + 1).padStart(2, '0') + '</b><span></span></span>' +
+      '<img alt="" loading="' + (i < 8 ? 'eager' : 'lazy') + '" decoding="async" width="300" height="400">';
+    btn.querySelector('.card-meta span').textContent = item.title.replace(/^[^:]+:\s*/, '');
+    btn.querySelector('img').src = item.thumb;
+    btn.addEventListener('click', () => openLb(idx));
+    track.appendChild(btn);
+    cards.push({ el: btn, i, scale: 1, target: 1 });
+  });
+
+  // Escala de toda la escena según el viewport (cards 300x400 en desktop)
+  function fitScene() {
+    const s = Math.min(1, Math.max(.55, window.innerWidth / 1100));
+    fit.style.transform = 'scale(' + s + ')';
+  }
+
+  if (reduce) {
+    document.documentElement.classList.add('static');
+  } else {
+    fitScene();
+    window.addEventListener('resize', fitScene);
+    document.getElementById('spacer').style.height = (LOOP * 4 + window.innerHeight) + 'px';
+    window.scrollTo(0, LOOP); // arrancar en el segundo loop permite scrollear para atrás
+
+    let smooth = LOOP;
+    let mouse = null;
+    const stage = document.getElementById('stage');
+    stage.addEventListener('pointermove', (e) => { if (e.pointerType === 'mouse') mouse = { x: e.clientX, y: e.clientY }; });
+    stage.addEventListener('pointerleave', () => { mouse = null; });
+
+    function frame() {
+      let target = window.scrollY;
+      // Recentrar sin salto visible: mover scroll y valor suavizado juntos un loop entero
+      if (target > LOOP * 3) { window.scrollTo(0, target - LOOP); smooth -= LOOP; target -= LOOP; }
+      else if (target < LOOP * .5) { window.scrollTo(0, target + LOOP); smooth += LOOP; target += LOOP; }
+      smooth += (target - smooth) * .12;
+
+      const p = ((smooth % LOOP) + LOOP) % LOOP / LOOP;
+      track.style.transform =
+        'translate3d(' + (-p * N * STEP.x) + 'px,' + (-p * N * STEP.y) + 'px,' + (-p * N * STEP.z) + 'px)';
+
+      // Efecto magnético: primero todas las lecturas, después todas las escrituras
+      if (mouse) {
+        for (const c of cards) {
+          const r = c.el.getBoundingClientRect();
+          const d = Math.hypot(mouse.x - (r.left + r.width / 2), mouse.y - (r.top + r.height / 2));
+          c.target = 1 + .5 * Math.max(0, 1 - d / 400);
+        }
+      } else {
+        for (const c of cards) c.target = 1;
+      }
+      for (const c of cards) {
+        c.scale += (c.target - c.scale) * .18;
+        c.el.style.transform =
+          'translate3d(' + c.i * STEP.x + 'px,' + c.i * STEP.y + 'px,' + c.i * STEP.z + 'px) rotateY(-50deg) scale(' + c.scale.toFixed(3) + ')';
+      }
+      requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Lightbox con navegación
+  const lb = document.getElementById('lb');
+  const lbImg = document.getElementById('lbImg');
+  const lbCap = document.getElementById('lbCap');
+  const lbClose = document.getElementById('lbClose');
+  let cur = 0, lastFocus = null;
+
+  function show(i) {
+    cur = (i + N) % N;
+    lbImg.src = ITEMS[cur].full;
+    lbImg.alt = ITEMS[cur].title;
+    lbCap.textContent = ITEMS[cur].title;
+  }
+  function openLb(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lbClose.focus();
+  }
+  function closeLb() {
+    lb.hidden = true;
+    lbImg.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus({ preventScroll: true });
+  }
+  lbClose.addEventListener('click', closeLb);
+  document.getElementById('lbPrev').addEventListener('click', () => show(cur - 1));
+  document.getElementById('lbNext').addEventListener('click', () => show(cur + 1));
+  lb.addEventListener('click', (e) => { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', (e) => {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') closeLb();
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+    if (e.key === 'Tab') {
+      const f = [lbClose, document.getElementById('lbPrev'), document.getElementById('lbNext')];
+      const at = f.indexOf(document.activeElement);
+      e.preventDefault();
+      f[(at + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+</script>
+</body>
+</html>

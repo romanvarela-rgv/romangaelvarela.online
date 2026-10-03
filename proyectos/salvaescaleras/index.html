@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salvaescaleras - Sillas y Plataformas Salvaescaleras</title>
+<meta name="description" content="Sillas y plataformas salvaescaleras para interior y exterior. Recupere su autonomía en casa con instalación y servicio técnico especializado.">
+<link rel="icon" type="image/svg+xml" href="img/marca/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1 class="visually-hidden">Sillas y Plataformas Salvaescaleras - Soluciones de Accesibilidad</h1>
+
+<!-- ========== HEADER ========== -->
+<header class="site-header" id="top">
+  <div class="header-inner container">
+    <a href="#top" class="logo">
+      <img src="img/marca/logo-horizontal-color.svg" alt="Salvaescaleras" class="logo-img">
+    </a>
+
+    <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="mainNav">
+      <ul class="nav-list">
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-expanded="false">
+            Sillas salvaescaleras
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-chev"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-content">
+            <ul class="nav-grid">
+              <li>
+                <a href="#productos" class="nav-link-card">
+                  <div class="nav-card-title">Sillas rectas</div>
+                  <div class="nav-card-desc">Para tramos rectos sin descanso. Instalación rápida sin obras.</div>
+                </a>
+              </li>
+              <li>
+                <a href="#productos" class="nav-link-card">
+                  <div class="nav-card-title">Sillas curvas</div>
+                  <div class="nav-card-desc">A medida para escaleras con giros o múltiples tramos.</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        
+        <li class="nav-item has-mega">
+          <button class="nav-trigger" aria-expanded="false">
+            Plataformas
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="nav-chev"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-content">
+            <ul class="nav-grid">
+              <li>
+                <a href="#productos" class="nav-link-card">
+                  <div class="nav-card-title">Plataforma oblicua</div>
+                  <div class="nav-card-desc">Sigue el recorrido de la escalera. Plegable y discreta.</div>
+                </a>
+              </li>
+              <li>
+                <a href="#productos" class="nav-link-card">
+                  <div class="nav-card-title">Modelos exterior</div>
+                  <div class="nav-card-desc">Equipos con protección especial contra la intemperie.</div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="nav-item">
+          <a href="#nosotros" class="nav-link-simple">Nosotros</a>
+        </li>
+        <li class="nav-item">
+          <a href="#contacto" class="nav-link-simple">Contacto</a>
+        </li>
+      </ul>
+    </nav>
+
+    <a href="#presupuesto" class="btn btn-cta">Solicite su presupuesto</a>
+  </div>
+</header>
+
+<!-- ========== HERO / CARRUSEL DE PRODUCTOS ========== -->
+<section class="hero" id="productos">
+  <div class="slider" id="slider">
+
+    <article class="slide is-active">
+      <div class="slide-media" style="background-image:url('img/silla-curva-amarilla.jpg')"></div>
+      <div class="slide-content container">
+        <h2>Sillas salvaescaleras</h2>
+        <p>Cuentan con un asiento cómodo y plegable para que la persona se desplace sentada, subiendo y bajando la escalera con total seguridad y sin esfuerzo.</p>
+        <div class="slide-actions">
+          <a href="#productos-grid" class="btn btn-outline">Más información</a>
+          <a href="#contacto" class="btn btn-cta">Contacto</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-media" style="background-image:url('img/plataforma-silla-ruedas.jpg')"></div>
+      <div class="slide-content container">
+        <h2>Plataformas salvaescaleras</h2>
+        <p>Diseñadas para transportar a una persona directamente en su silla de ruedas, sin necesidad de trasladarse a otro asiento.</p>
+        <div class="slide-actions">
+          <a href="#productos-grid" class="btn btn-outline">Más información</a>
+          <a href="#contacto" class="btn btn-cta">Contacto</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="slide">
+      <div class="slide-media" style="background-image:url('img/exterior-salvaescaleras.jpg')"></div>
+      <div class="slide-content container">
+        <h2>Modelos para exterior</h2>
+        <p>Fabricados con materiales resistentes a la intemperie, pensados para instalarse en escaleras al aire libre sin perder seguridad ni durabilidad.</p>
+        <div class="slide-actions">
+          <a href="#productos-grid" class="btn btn-outline">Más información</a>
+          <a href="#contacto" class="btn btn-cta">Contacto</a>
+        </div>
+      </div>
+    </article>
+
+    <button class="slider-arrow prev" id="prevSlide" aria-label="Anterior">‹</button>
+    <button class="slider-arrow next" id="nextSlide" aria-label="Siguiente">›</button>
+
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+</section>
+
+<!-- ========== TRUST BANNER ========== -->
+<div class="trust-banner fade-in">
+  <div class="container">
+    <p>Trabajamos con las mejores marcas a nivel mundial para garantizar su seguridad</p>
+    <div class="brands-track">
+      <span>Stannah</span>
+      <span>Acorn</span>
+      <span>Vimec</span>
+      <span>Handicare</span>
+      <span>Thyssenkrupp</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NUESTROS PRODUCTOS ========== -->
+<section class="products-section fade-in" id="productos-grid">
+  <div class="container">
+    <h2 class="section-title center">Nuestros productos</h2>
+    <div class="products-grid">
+      <article class="product-card">
+        <div class="product-card-media" style="background-image:url('img/silla-recta-instalacion.jpg')"></div>
+        <span class="product-card-bar bar-green"></span>
+        <h3>Sillas salvaescaleras</h3>
+        <p>Instalación en menos de 24 horas y funcionamiento a batería integrado para asegurar su uso constante, incluso durante cortes de luz.</p>
+      </article>
+      <article class="product-card">
+        <div class="product-card-media" style="background-image:url('img/plataforma-silla-ruedas.jpg')"></div>
+        <span class="product-card-bar bar-black"></span>
+        <h3>Plataformas salvaescaleras</h3>
+        <p>Capacidad de carga superior y controles ergonómicos integrados, maximizando la independencia y comodidad del usuario.</p>
+      </article>
+      <article class="product-card">
+        <div class="product-card-media" style="background-image:url('img/exterior-salvaescaleras.jpg')"></div>
+        <span class="product-card-bar bar-blue"></span>
+        <h3>Modelos para exterior</h3>
+        <p>Incorporan fundas protectoras y componentes sellados herméticamente contra lluvia, sol y humedad extremas.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FORMULARIO DE PRESUPUESTO (WIZARD) ========== -->
+<section class="quote-section fade-in" id="presupuesto">
+  <div class="container">
+    <h2 class="section-title center">Solicite su presupuesto</h2>
+
+    <div class="wizard" id="wizard">
+      <div class="wizard-steps">
+        <div class="wizard-progress-bar"><div class="wizard-progress-fill" id="wizardProgress"></div></div>
+        <div class="wizard-step is-active" data-step="1">
+          <span class="step-circle">1</span>
+          <span class="step-label">Nombre</span>
+        </div>
+        <div class="wizard-step" data-step="2">
+          <span class="step-circle">2</span>
+          <span class="step-label">Contacto</span>
+        </div>
+        <div class="wizard-step" data-step="3">
+          <span class="step-circle">3</span>
+          <span class="step-label">Ubicación</span>
+        </div>
+        <div class="wizard-step" data-step="4">
+          <span class="step-circle">4</span>
+          <span class="step-label">Finalizar</span>
+        </div>
+      </div>
+
+      <form class="wizard-form" id="wizardForm">
+
+        <div class="wizard-pane is-active" data-pane="1">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fName">Nombre</label>
+              <input type="text" id="fName" name="fName" placeholder="[Nombre]">
+            </div>
+            <div class="form-field">
+              <label for="fLastName">Apellido</label>
+              <input type="text" id="fLastName" name="fLastName" placeholder="[Apellido]">
+            </div>
+          </div>
+        </div>
+
+        <div class="wizard-pane" data-pane="2">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fEmail">Email</label>
+              <input type="email" id="fEmail" name="fEmail" placeholder="[correo@ejemplo.com]">
+            </div>
+            <div class="form-field">
+              <label for="fPhone">Teléfono</label>
+              <input type="tel" id="fPhone" name="fPhone" placeholder="[Teléfono]">
+            </div>
+          </div>
+        </div>
+
+        <div class="wizard-pane" data-pane="3">
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fCity">Ciudad</label>
+              <input type="text" id="fCity" name="fCity" placeholder="[Ciudad]">
+            </div>
+            <div class="form-field">
+              <label for="fProduct">Producto de interés</label>
+              <select id="fProduct" name="fProduct">
+                <option>Sillas salvaescaleras</option>
+                <option>Plataformas salvaescaleras</option>
+                <option>Modelos para exterior</option>
+                <option>Otros</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="wizard-pane" data-pane="4">
+          <p class="wizard-summary">Por favor, revise que sus datos sean correctos. Un asesor se comunicará a la brevedad para brindarle un presupuesto a medida.</p>
+          <div class="form-checkbox">
+            <input type="checkbox" id="fPrivacy" name="fPrivacy" required>
+            <label for="fPrivacy">Acepto las políticas de privacidad y el tratamiento de mis datos.</label>
+          </div>
+        </div>
+
+        <div class="wizard-actions">
+          <button type="button" class="btn btn-outline" id="wizardBack">Atrás</button>
+          <button type="button" class="btn btn-cta" id="wizardNext">Siguiente</button>
+          <button type="submit" class="btn btn-cta" id="wizardSubmit" hidden>Enviar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ¿POR QUÉ ELEGIRNOS? ========== -->
+<section class="why-us fade-in" id="nosotros">
+  <div class="container why-us-grid">
+    <div class="why-us-text">
+      <h2 class="section-title">¿Por qué elegir Salvaescaleras?</h2>
+      <p>Con más de 10 años de experiencia, ayudamos a que las personas con movilidad reducida recuperen la libertad de moverse por su propia casa. Asesoramos, instalamos y damos servicio técnico a sillas y plataformas salvaescaleras para interior y exterior, adaptadas a cada tipo de escalera.</p>
+      <p>Trabajamos con primeras marcas internacionales para garantizar seguridad, calidad y el mejor diseño en cada uno de nuestros equipos instalados.</p>
+    </div>
+    <div class="why-us-media" style="background-image:url('img/silla-recta-instalacion.jpg')"></div>
+  </div>
+
+  <div class="container features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16"/><path d="M4 15h16"/><path d="M10 3L8 21"/><path d="M16 3l-2 18"/></svg>
+      </div>
+      <h3>Variedad de modelos</h3>
+      <p>Sillas y plataformas para escaleras rectas, curvas, de interior y de exterior.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <h3>Instalación profesional</h3>
+      <p>Relevamiento, medición y montaje a cargo de técnicos especializados.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+      </div>
+      <h3>Servicio técnico</h3>
+      <p>Mantenimiento y soporte posventa para que el equipo funcione siempre.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BANNER DE INNOVACIÓN ========== -->
+<section class="innovation-banner fade-in">
+  <div class="container center">
+    <img src="img/marca/favicon.svg" alt="" class="mini-logo" width="40" height="40">
+    <h2 class="section-title">Descubra la innovación en accesibilidad</h2>
+    <p>Equipos seguros y silenciosos, pensados para instalarse sin obras y adaptarse a la decoración de su hogar.</p>
+  </div>
+</section>
+
+<!-- ========== BENEFICIOS ========== -->
+<section class="benefits fade-in">
+  <div class="container benefits-grid">
+    <div class="benefits-text">
+      <h2 class="section-title">Conozca más sobre nuestros productos</h2>
+      <ul class="checklist">
+        <li>Instalación rápida, sin obras ni modificaciones en la escalera.</li>
+        <li>Diseño discreto que se adapta a la decoración de su hogar.</li>
+        <li>Manejo simple con mando a distancia y cinturón de seguridad.</li>
+        <li>Servicio técnico especializado y mantenimiento periódico.</li>
+        <li>Recupere autonomía y libertad para moverse por su casa.</li>
+      </ul>
+    </div>
+    <div class="benefits-media" style="background-image:url('img/silla-recta-alfombra.jpg')"></div>
+  </div>
+</section>
+
+<!-- ========== TESTIMONIOS ========== -->
+<section class="testimonials-section fade-in" id="testimonios">
+  <div class="container center">
+    <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Instalaron la silla en una mañana y sin ensuciar nada. Mi madre volvió a usar la planta alta después de 2 años. Recomendadísimos."</p>
+        <h4>— Carlos M.</h4>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"Excelente atención desde el primer llamado. Me asesoraron sobre qué modelo convenía para mi escalera curva y quedó perfecta."</p>
+        <h4>— Silvia R.</h4>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p>"El equipo exterior funciona bárbaro incluso con lluvia. El servicio posventa es impecable, siempre responden rápido."</p>
+        <h4>— Roberto G.</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAQ ========== -->
+<section class="faq-section fade-in" id="faq">
+  <div class="container">
+    <h2 class="section-title center">Preguntas Frecuentes</h2>
+    <div class="faq-accordion">
+      <div class="faq-item">
+        <button class="faq-trigger">¿Se necesita hacer obra en casa para instalarla? <span class="faq-icon">+</span></button>
+        <div class="faq-content"><p>No, nuestras sillas y plataformas se fijan directamente a los escalones, no a la pared, por lo que no requieren ninguna reforma arquitectónica ni albañilería.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">¿Qué pasa si se corta el suministro eléctrico? <span class="faq-icon">+</span></button>
+        <div class="faq-content"><p>Todos nuestros equipos funcionan con un sistema de baterías autorecargables. En caso de un corte de luz, el equipo seguirá funcionando con normalidad para realizar varios viajes.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">¿Se pueden instalar en escaleras muy estrechas o curvas? <span class="faq-icon">+</span></button>
+        <div class="faq-content"><p>Sí, contamos con modelos diseñados específicamente para espacios reducidos, escaleras de caracol, con descansos o giros muy pronunciados.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger">¿Cuánto demora la instalación? <span class="faq-icon">+</span></button>
+        <div class="faq-content"><p>Una vez fabricado el riel (en caso de ser curvo), la instalación en el domicilio suele demorar menos de un día, dejando todo listo y probado.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACTO ========== -->
+<section class="contact-section fade-in" id="contacto">
+  <div class="container center">
+    <h2 class="section-title">Hablemos hoy mismo</h2>
+    <p>Estamos listos para asesorarte y mejorar la accesibilidad de tu hogar.</p>
+    
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-icon">📍</div>
+        <h4>Dirección</h4>
+        <p>Av. Libertador 1234, CABA</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">📞</div>
+        <h4>Teléfono</h4>
+        <p>+54 9 11 1234-5678</p>
+      </div>
+      <div class="contact-card">
+        <div class="contact-icon">✉️</div>
+        <h4>Email</h4>
+        <p>info@salvaescaleras.com</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="site-footer">
+  <div class="container center">
+    <p>Copyright <span id="year"></span> © Salvaescaleras · Todos los derechos reservados</p>
+  </div>
+</footer>
+
+<!-- ========== WHATSAPP FLOAT ========== -->
+<a href="https://wa.me/123456789" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" width="32" height="32"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.712.921 3.149.921 3.181 0 5.767-2.587 5.768-5.766 0-3.181-2.587-5.767-5.768-5.767zm3.333 8.13c-.159.278-.595.441-1.22.441-.624 0-1.74-.298-3.197-1.579-1.457-1.28-2.129-2.614-2.288-2.893-.159-.278-.016-.425.132-.556.148-.13.318-.363.477-.544.159-.181.212-.314.318-.521.106-.207.053-.391-.027-.531-.08-.14-.728-1.782-.997-2.439-.269-.657-.543-.568-.745-.578-.202-.01-.435-.012-.668-.012-.233 0-.612.087-.931.428-.319.341-1.22 1.182-1.22 2.879 0 1.698 1.251 3.344 1.425 3.576.174.232 2.457 3.714 5.952 5.177 3.495 1.462 3.495.975 4.133.921.637-.054 2.062-.835 2.353-1.64.292-.805.292-1.492.204-1.64zM12 2C6.477 2 2 6.477 2 12c0 1.831.493 3.558 1.368 5.042L2 22l5.127-1.314C8.528 21.528 10.219 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 18c-1.56 0-3.056-.4-4.37-1.157l-.313-.18-3.092.793.812-2.985-.203-.318A7.95 7.95 0 0 1 4 12c0-4.411 3.589-8 8-8s8 3.589 8 8-3.589 8-8 8z"/></svg>
+</a>
+
+<script src="script.js"></script>
+</body>
+</html>

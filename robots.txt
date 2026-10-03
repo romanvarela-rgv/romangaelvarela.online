@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://romangaelvarela.online/sitemap.xml

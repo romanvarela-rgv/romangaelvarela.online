@@ -1,0 +1,53 @@
+# ── Seguridad y caché para Hostinger (LiteSpeed / Apache) ──
+# Si en el servidor ya existe un .htaccess, fusionar este contenido con el existente.
+
+Options -Indexes
+
+# Forzar HTTPS (Hostinger ya lo hace; queda como respaldo)
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# Bloquear archivos que nunca deberían servirse
+<FilesMatch "(^\.|\.(py|md|json|lock|zip|bak|sql|log)$)">
+Require all denied
+</FilesMatch>
+
+<IfModule mod_headers.c>
+# HTTPS obligatorio por un año en este dominio
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+# Evita que el navegador "adivine" tipos de archivo
+Header always set X-Content-Type-Options "nosniff"
+# Nadie puede meter el sitio en un iframe (clickjacking)
+Header always set X-Frame-Options "SAMEORIGIN"
+# Al salir a otro sitio solo se envía el dominio, no la URL completa
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+# El sitio no usa cámara, micrófono ni ubicación
+Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+# CSP mínima: no bloquea los scripts propios ni los futuros píxeles de anuncios
+Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://wa.me; object-src 'none'; upgrade-insecure-requests"
+
+# Caché: el HTML siempre se revalida, así los cambios se ven al toque
+<FilesMatch "\.html?$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+# CSS lleva ?v= en el HTML: se puede cachear largo
+<FilesMatch "\.(css|js)$">
+Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
+<FilesMatch "\.(webp|jpg|jpeg|png|svg|ico|woff2?)$">
+Header set Cache-Control "public, max-age=2592000"
+</FilesMatch>
+<FilesMatch "\.pdf$">
+Header set Cache-Control "public, max-age=604800"
+</FilesMatch>
+</IfModule>
+
+# Compresión de texto
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/xml text/xml
+</IfModule>
+
+AddDefaultCharset UTF-8
