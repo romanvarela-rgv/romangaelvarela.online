@@ -6,7 +6,7 @@ El código de mi sitio personal: [romangaelvarela.online](https://romangaelvarel
 
 ## Qué es
 
-Es mi portfolio y la puerta de entrada para quien quiere trabajar conmigo. Ahí están las portadas que hice para artistas de la escena urbana, los sitios y apps que programé y mis juegos de la facu. Todo lleva a lo mismo: que me escribas por WhatsApp.
+Es mi portfolio y la puerta de entrada para quien quiere trabajar conmigo. Ahí están mis portadas y diseños para la escena urbana, los sitios y apps que programé y mis juegos de la facu. Todo lleva a lo mismo: que me escribas por WhatsApp.
 
 ## Qué hay en el repo
 
